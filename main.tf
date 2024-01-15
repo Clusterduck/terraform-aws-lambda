@@ -67,12 +67,12 @@ resource "aws_lambda_function" "this" {
     }
   }
 
-  dynamic "environment" {
-    for_each = length(keys(var.environment_variables)) == 0 ? [] : [true]
-    content {
-      variables = var.environment_variables
-    }
-  }
+  # dynamic "environment" {
+  #   for_each = length(keys(var.environment_variables)) == 0 ? [] : [true]
+  #   content {
+  #     variables = var.environment_variables
+  #   }
+  # }
 
   dynamic "dead_letter_config" {
     for_each = var.dead_letter_target_arn == null ? [] : [true]
